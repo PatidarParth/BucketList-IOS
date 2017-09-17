@@ -14,6 +14,9 @@
 		17F1BF271F6F0E460078AF3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17F1BF251F6F0E460078AF3A /* LaunchScreen.storyboard */; };
 		17F1BF321F6F0E470078AF3A /* BucketListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1BF311F6F0E470078AF3A /* BucketListTests.swift */; };
 		17F1BF3D1F6F0E470078AF3A /* BucketListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1BF3C1F6F0E470078AF3A /* BucketListUITests.swift */; };
+		17F1BF4B1F6F106F0078AF3A /* BucketListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1BF4A1F6F106F0078AF3A /* BucketListTableViewController.swift */; };
+		17F1BF4F1F6F11190078AF3A /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1BF4E1F6F11190078AF3A /* AddItemViewController.swift */; };
+		17F1BF531F6F18870078AF3A /* BucketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1BF521F6F18870078AF3A /* BucketItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		17F1BF381F6F0E470078AF3A /* BucketListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BucketListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F1BF3C1F6F0E470078AF3A /* BucketListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListUITests.swift; sourceTree = "<group>"; };
 		17F1BF3E1F6F0E470078AF3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17F1BF4A1F6F106F0078AF3A /* BucketListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BucketListTableViewController.swift; sourceTree = "<group>"; };
+		17F1BF4E1F6F11190078AF3A /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		17F1BF521F6F18870078AF3A /* BucketItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BucketItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,9 @@
 				17F1BF231F6F0E460078AF3A /* Assets.xcassets */,
 				17F1BF251F6F0E460078AF3A /* LaunchScreen.storyboard */,
 				17F1BF281F6F0E460078AF3A /* Info.plist */,
+				17F1BF4A1F6F106F0078AF3A /* BucketListTableViewController.swift */,
+				17F1BF4E1F6F11190078AF3A /* AddItemViewController.swift */,
+				17F1BF521F6F18870078AF3A /* BucketItem.swift */,
 			);
 			path = BucketList;
 			sourceTree = "<group>";
@@ -260,6 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				17F1BF1F1F6F0E460078AF3A /* ViewController.swift in Sources */,
+				17F1BF4F1F6F11190078AF3A /* AddItemViewController.swift in Sources */,
+				17F1BF4B1F6F106F0078AF3A /* BucketListTableViewController.swift in Sources */,
+				17F1BF531F6F18870078AF3A /* BucketItem.swift in Sources */,
 				17F1BF1D1F6F0E460078AF3A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
