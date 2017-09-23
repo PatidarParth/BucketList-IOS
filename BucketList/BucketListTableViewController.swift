@@ -9,98 +9,146 @@
 import UIKit
 
 class BucketListTableViewController: UITableViewController {
-    var list: NSMutableArray = []
     
-    func AddItem() {
-        let bucketItem1 = BucketItem(name:"Streak the Lawn", date: "09-15-2018")
-        let bucketItem2 = BucketItem(name:"Streak the Lawn", date: "09-15-2018")
-        self.list.add(bucketItem1)
-        self.list.add(bucketItem2)
+    
+    @IBOutlet var tableview: UITableView!
+    
+    
+    var list = [BucketItem]()
+    
+    
+    func AddItem(name:String, date:String, longitude:Double, latitude:Double,description:String ) {
+        let bucket = (BucketItem(name: name, date: date, done: false, longitude:longitude, latitude:latitude, des: description))
+        list += [bucket]
+        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        AddItem()
-        print("dsg")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        list += [BucketItem(name: "Streak the Lawn", date: "09-17-2018", done: false, longitude: 10.0, latitude: 11.0, des: "streak the lawn alot")]
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.list.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("dsf")
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
         
-        let bucket_item: BucketItem = self.list.object(at: indexPath.row) as! BucketItem
+        let bucket_item: BucketItem = list[indexPath.row]
         cell.textLabel?.text = bucket_item.name
-        print("dsfsdf")
+        cell.detailTextLabel?.text = bucket_item.Date
+        
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+        
+        
+        let done = UITableViewRowAction(style: .default, title: "Done") { action, index in
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: index)
+            cell.backgroundColor = .lightGray
+            let bucket_item: BucketItem = self.list[index.row]
+            bucket_item.Done = true
+            
+        }
+        
+        let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
+ 
+            self.performSegue(withIdentifier: "Edit", sender: index)
+            
+            
+        }
+        edit.backgroundColor = .lightGray
+        
+        done.backgroundColor = .blue
+        
+        return [done, edit]
+    }
     
-
-    /*
-    // Override to support conditional editing of the table view.
+    //Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
+    
+    
+    //Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        
     }
-    */
-
-    /*
+    
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
+        if segue.source is AddItemViewController {
+            if let senderVC = segue.source as? AddItemViewController {
+                AddItem(name: senderVC.nameToDisplay, date: senderVC.dateToDisplay, longitude: senderVC.longToDisplay, latitude: senderVC.latToDisplay, description: senderVC.desToDisplay )
+            }
+            tableview.reloadData()
+        }
+    }
+    
+    @IBAction func unwindToVC2(segue:UIStoryboardSegue) {
+        if segue.source is EditItemViewController {
+            if let senderVC = segue.source as? EditItemViewController {
+                
+                // senderVC.nameToDisplay =
+            }
+            tableview.reloadData()
+        }
+    }
+    
     // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+    //override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+    
+    //}
+    
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        
+        if segue.identifier == "Edit" {
+            if let navController = segue.destination as? UINavigationController {
+                
+                if let chidVC = navController.topViewController as? EditItemViewController {
+                        print("hi")
+                        let selectedRow = (sender as! NSIndexPath).row;
+                        print(selectedRow)
+                        chidVC.recievedItem = list[selectedRow]
 
-}
+                    }
+                }
+                
+            }
+            
+            
+            
+            
+        }
+    }
+

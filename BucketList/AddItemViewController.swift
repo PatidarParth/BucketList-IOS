@@ -9,6 +9,25 @@
 import UIKit
 
 class AddItemViewController: UIViewController {
+    var nameToDisplay: String!
+    var dateToDisplay:String!
+    var latToDisplay: Double!
+    var longToDisplay:Double!
+    var desToDisplay: String!
+
+    
+ 
+    @IBOutlet weak var descriptin: UITextField!
+    @IBOutlet weak var Date: UIDatePicker!
+    @IBOutlet weak var Name: UITextField!
+    @IBOutlet weak var longitude: UITextField!
+    @IBOutlet weak var latitude: UITextField!
+
+    
+    
+    @IBAction func save(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "unwindAdd", sender: self)
+    }
     @IBAction func Cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -25,14 +44,23 @@ class AddItemViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        
+            nameToDisplay = Name.text!
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "MM-dd-YYYY"
+            dateToDisplay = timeFormatter.string(from: Date.date)
+            latToDisplay = Double(latitude.text!)
+            longToDisplay = Double(longitude.text!)
+            desToDisplay = descriptin.text!
 
-}
+        }
+    }
+
+    
+
+

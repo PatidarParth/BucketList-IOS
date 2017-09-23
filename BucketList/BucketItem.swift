@@ -12,9 +12,19 @@ class BucketItem: NSObject {
     var name: String = ""
     var completed: Bool = false
     var Date: String = ""
+    var Done: Bool
+    var Longitude: Double
+    var Latitude: Double
+    var des: String = ""
     
-    init(name:String, date:String) {
+    
+    init(name:String, date:String, done:Bool, longitude:Double, latitude:Double, des:String)
+    {
         self.name = name
-        self.Date = date 
+        self.Date = date
+        self.Done = done
+        self.Latitude = latitude
+        self.Longitude = longitude
+        self.des = des
     }
 }
