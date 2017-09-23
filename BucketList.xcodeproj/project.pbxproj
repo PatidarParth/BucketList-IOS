@@ -17,6 +17,8 @@
 		17F1BF4B1F6F106F0078AF3A /* BucketListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1BF4A1F6F106F0078AF3A /* BucketListTableViewController.swift */; };
 		17F1BF4F1F6F11190078AF3A /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1BF4E1F6F11190078AF3A /* AddItemViewController.swift */; };
 		17F1BF531F6F18870078AF3A /* BucketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1BF521F6F18870078AF3A /* BucketItem.swift */; };
+		7F27F5411F6F852000E893FF /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F27F5401F6F852000E893FF /* EditItemViewController.swift */; };
+		7F27F5431F75893A00E893FF /* BucketListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F27F5421F75893A00E893FF /* BucketListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		17F1BF4A1F6F106F0078AF3A /* BucketListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BucketListTableViewController.swift; sourceTree = "<group>"; };
 		17F1BF4E1F6F11190078AF3A /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		17F1BF521F6F18870078AF3A /* BucketItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BucketItem.swift; sourceTree = "<group>"; };
+		7F27F5401F6F852000E893FF /* EditItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
+		7F27F5421F75893A00E893FF /* BucketListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BucketListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 				17F1BF4A1F6F106F0078AF3A /* BucketListTableViewController.swift */,
 				17F1BF4E1F6F11190078AF3A /* AddItemViewController.swift */,
 				17F1BF521F6F18870078AF3A /* BucketItem.swift */,
+				7F27F5401F6F852000E893FF /* EditItemViewController.swift */,
+				7F27F5421F75893A00E893FF /* BucketListTableViewCell.swift */,
 			);
 			path = BucketList;
 			sourceTree = "<group>";
@@ -269,7 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				17F1BF1F1F6F0E460078AF3A /* ViewController.swift in Sources */,
+				7F27F5411F6F852000E893FF /* EditItemViewController.swift in Sources */,
 				17F1BF4F1F6F11190078AF3A /* AddItemViewController.swift in Sources */,
+				7F27F5431F75893A00E893FF /* BucketListTableViewCell.swift in Sources */,
 				17F1BF4B1F6F106F0078AF3A /* BucketListTableViewController.swift in Sources */,
 				17F1BF531F6F18870078AF3A /* BucketItem.swift in Sources */,
 				17F1BF1D1F6F0E460078AF3A /* AppDelegate.swift in Sources */,
@@ -440,6 +448,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.virginia.cs.cs4720.pjp8f.BucketList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -517,6 +526,7 @@
 				17F1BF431F6F0E470078AF3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17F1BF441F6F0E470078AF3A /* Build configuration list for PBXNativeTarget "BucketListTests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +535,7 @@
 				17F1BF461F6F0E470078AF3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17F1BF471F6F0E470078AF3A /* Build configuration list for PBXNativeTarget "BucketListUITests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +544,7 @@
 				17F1BF491F6F0E470078AF3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
