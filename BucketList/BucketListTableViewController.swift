@@ -13,19 +13,26 @@ class BucketListTableViewController: UITableViewController {
     
     @IBOutlet var tableview: UITableView!
     
-    
-    var list = [BucketItem]()
+    var list : [BucketItem] = []
+
     
     
     func AddItem(name:String, date:String, longitude:Double, latitude:Double,description:String ) {
-        let bucket = (BucketItem(name: name, date: date, done: false, longitude:longitude, latitude:latitude, des: description))
+        let bucket = (BucketItem(name: name, date: Date(), done: false, longitude:longitude, latitude:latitude, des: description))
         list += [bucket]
+        orderTable()
         
+    }
+    
+    func orderTable() {
+        list.sort(by: {$0.date < $1.date})
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        list += [BucketItem(name: "Streak the Lawn", date: "09-17-2018", done: false, longitude: 10.0, latitude: 11.0, des: "streak the lawn alot")]
+
+        list += [BucketItem(name: "Streak the Lawn", date: Date(), done: false, longitude: 10.0, latitude: 11.0, des: "streak the lawn alot")]
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,7 +59,10 @@ class BucketListTableViewController: UITableViewController {
         
         let bucket_item: BucketItem = list[indexPath.row]
         cell.textLabel?.text = bucket_item.name
-        cell.detailTextLabel?.text = bucket_item.Date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let dateString = dateFormatter.string(from: bucket_item.date)
+        cell.detailTextLabel?.text = dateString
         
         return cell
     }
@@ -97,6 +107,7 @@ class BucketListTableViewController: UITableViewController {
         if segue.source is AddItemViewController {
             if let senderVC = segue.source as? AddItemViewController {
                 AddItem(name: senderVC.nameToDisplay, date: senderVC.dateToDisplay, longitude: senderVC.longToDisplay, latitude: senderVC.latToDisplay, description: senderVC.desToDisplay )
+                orderTable()
             }
             tableview.reloadData()
         }
@@ -105,8 +116,13 @@ class BucketListTableViewController: UITableViewController {
     @IBAction func unwindToVC2(segue:UIStoryboardSegue) {
         if segue.source is EditItemViewController {
             if let senderVC = segue.source as? EditItemViewController {
-                
-                // senderVC.nameToDisplay =
+                let BucketItem = list[senderVC.passIndex]
+                BucketItem.name = senderVC.nameToDisplay
+                BucketItem.date = senderVC.dateToDisplay
+                BucketItem.Longitude = senderVC.longToDisplay
+                BucketItem.Latitude = senderVC.latToDisplay
+                BucketItem.des = senderVC.desToDisplay
+                 orderTable()
             }
             tableview.reloadData()
         }
@@ -136,9 +152,9 @@ class BucketListTableViewController: UITableViewController {
             if let navController = segue.destination as? UINavigationController {
                 
                 if let chidVC = navController.topViewController as? EditItemViewController {
-                        print("hi")
                         let selectedRow = (sender as! NSIndexPath).row;
                         print(selectedRow)
+                        chidVC.index = selectedRow
                         chidVC.recievedItem = list[selectedRow]
 
                     }
@@ -146,7 +162,7 @@ class BucketListTableViewController: UITableViewController {
                 
             }
             
-            
+        
             
             
         }
